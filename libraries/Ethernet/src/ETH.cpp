@@ -597,4 +597,17 @@ String ETHClass::macAddress(void)
     return String(macStr);
 }
 
+uint8_t * ETHClass::setMACAddress(uint8_t* mac)
+{
+    if(!mac){
+        return NULL;
+    }
+#ifdef ESP_IDF_VERSION_MAJOR
+    esp_eth_ioctl(eth_handle, ETH_CMD_S_MAC_ADDR, mac);
+#else
+    esp_eth_get_mac(mac);
+#endif
+    return mac;
+}
+
 ETHClass ETH;

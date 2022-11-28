@@ -101,6 +101,8 @@ class ETHClass {
         uint8_t * macAddress(uint8_t* mac);
         String macAddress();
 
+        uint8_t * setMACAddress(uint8_t* mac);
+
         friend class WiFiClient;
         friend class WiFiServer;
 };
